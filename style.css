@@ -4,6 +4,7 @@ body{
     align-items: center;
     height: 1000px;
     background-color: rgb(221, 219, 216);
+    font-family: sans-serif;
 }
 
 
@@ -21,9 +22,15 @@ body{
 }
 
 .screen{
+    display: flex;
     background-color: white;
     height: 20%;
     padding: 10px;
+    justify-content: end;
+    align-items: flex-end;
+    font-weight: bold;
+    font-size: 30px
+    
 }
 
 .buttons{
@@ -55,7 +62,7 @@ button{
 
 .buttons > div{
     display: flex;
-    justify-content: space-around;
+justify-content: space-around;
     
 }
 
