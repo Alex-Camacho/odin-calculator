@@ -26,13 +26,22 @@ body{
 .screen{
     display: flex;
     background-color: white;
-    height: 20%;
+    max-height: 75px;
+    min-height: 75px;
     padding: 10px;
-    justify-content: end;
+    justify-content: space-between;
     align-items: flex-end;
     font-weight: bold;
-    font-size: 30px
+    font-size: 30px;
+    border-style: solid;
+    flex-direction: column;
     
+}
+
+.temporal{
+    display: flex;
+    color: grey;
+    font-size: 12px;
 }
 
 .buttons{

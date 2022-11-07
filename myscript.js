@@ -1,3 +1,6 @@
+let operator;
+let result;
+
 //Funciones matemáticas:
 const add = (a,b) => {
     result = a + b;
@@ -105,40 +108,94 @@ zero.addEventListener("click", () => {
     operationNum = Number(operation);
 });
 
+let dot = document.getElementById(".");
+dot.addEventListener("click", () => {
+    document.getElementById("display").textContent += ".";
+    operation += ".";
+    operationNum = Number(operation);
+})
+
 let plus = document.getElementById("+");
 plus.addEventListener("click", () => {
     document.getElementById("display").textContent += "+";
-    a = operationNum;
-    operation = 0;
-    operationNum = Number(operation);
-    operator = add;
+
+    if(operator === add || operator === subtract || operator === multiply || operator === divide){
+        b = operationNum;
+        operate(operator,a,b);
+        operator = add;
+        operation = 0;
+        operationNum = 0;
+        a = result;
+    }
+
+    else {
+        a = operationNum;
+        operation = 0;
+        operationNum = Number(operation);
+        operator = add;
+    }
 });
 
 let resta = document.getElementById("-");
 resta.addEventListener("click", () => {
     document.getElementById("display").textContent += "-";
-    a = operationNum;
-    operation = 0;
-    operationNum = Number(operation);
-    operator = subtract;
+    if(operator === add || operator === subtract || operator === multiply || operator === divide){
+        b = operationNum;
+        operate(operator,a,b);
+        operator = subtract;
+        operation = 0;
+        operationNum = 0;
+        a = result;
+    }
+
+    else {
+        a = operationNum;
+        operation = 0;
+        operationNum = Number(operation);
+        operator = subtract;
+    }
 });
 
 let mult = document.getElementById("*");
 mult.addEventListener("click", () => {
     document.getElementById("display").textContent += "x";
-    a = operationNum;
-    operation = 0;
-    operationNum = Number(operation);
-    operator = multiply;
+
+    if(operator === add || operator === subtract || operator === multiply || operator === divide){
+        b = operationNum;
+        operate(operator,a,b);
+        operator = multiply;
+        operation = 0;
+        operationNum = 0;
+        a = result;
+    } 
+
+    else {
+        a = operationNum;
+        operation = 0;
+        operationNum = Number(operation);
+        operator = multiply;
+    }
 });
 
 let dividir = document.getElementById("/");
 dividir.addEventListener("click", () => {
     document.getElementById("display").textContent += "/";
-    a = operationNum;
-    operation = 0;
-    operationNum = Number(operation);
-    operator = divide;
+
+    if(operator === add || operator === subtract || operator === multiply || operator === divide){
+        b = operationNum;
+        operate(operator,a,b);
+        operator = divide;
+        operation = 0;
+        operationNum = 0;
+        a = result;
+    }
+
+    else {
+        a = operationNum;
+        operation = 0;
+        operationNum = Number(operation);
+        operator = divide;
+    }
 });
 
 //Al pulsar "=" se efectua la operación
@@ -146,5 +203,21 @@ let equal = document.getElementById("=");
 equal.addEventListener("click", () => {
     b = operationNum;
     operate(operator,a,b);
-    document.getElementById("display").textContent = `${result}`; 
+    document.getElementById("temporal").textContent = document.getElementById("display").textContent; 
+    document.getElementById("display").textContent = `${result}`;
 });
+
+//Botón Clear
+let clear = document.getElementById("clear");
+clear.addEventListener("click", () => {
+    operation = 0;
+    operationNum = Number(operation);
+    result = 0;
+    a = 0;
+    b = 0;
+    operator = undefined;
+    document.getElementById("display").textContent = "";
+});
+
+// FALTA AÑADIR A SUBDISPLAY LAS OPERACIONES TRAS operator
+// o =, FUNCION DEL y AÑADIR RECONOCIMIENTO TECLADO
